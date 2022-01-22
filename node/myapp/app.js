@@ -10,8 +10,8 @@ app.use(express.urlencoded({ extended: true}));
 
 //임시 데이터
 const users = [
- { id: 1, name: "유저1" },
- { id: 2, name: "유저2" },
+ { id: 1, name: "유저21" },
+ { id: 2, name: "유저222" },
  { id: 3, name: "유저3" }
 ];
 
