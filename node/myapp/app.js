@@ -1,8 +1,7 @@
 //express 모듈 불러오기
 const express = require("express");
-
-//express 사용
 const app = express();
+const port = 7071;
 
 //Express 4.16.0버전 부터 body-parser의 일부 기능이 익스프레스에 내장 body-parser 연결 
 app.use(express.json());
@@ -10,11 +9,70 @@ app.use(express.urlencoded({ extended: true}));
 
 //임시 데이터
 const users = [
- { id: 1, name: "유저21" },
+ { id: 1, name: "유저211" },
  { id: 2, name: "유저222" },
  { id: 3, name: "유저3" }
 ];
 
+/*
+mysql test
+*/
+const conn = require('../query');
+/* GET home page. */ 
+app.get('/', function(req, res, next) { 
+    res.send("Hello 2223232332");
+    //conn.getAllUsers((rows) =>{ 
+        // res.render('index',{
+        //     user : result
+            
+        // });
+        
+   // }); 
+   
+}); 
+
+module.exports = app;
+
+/* 
+  app.post('/', (req, res) => {
+    const sql = "INSERT INTO users SET ?"
+    conn.query(sql,req.body,function(err, result, fields){
+      if (err) throw err;
+      console.log(result);
+      res.redirect('/');
+    });
+  });
+  
+  app.get('/create', (req, res) => 
+    res.sendFile(path.join(__dirname, 'html/form.html')))
+  
+  app.get('/edit/:id',(req,res)=>{
+    const sql = "SELECT * FROM users WHERE id = ?";
+    conn.query(sql,[req.params.id],function (err, result, fields) {  
+      if (err) throw err;
+      res.render('edit',{user : result});
+      });
+  });
+  
+  app.post('/update/:id',(req,res)=>{
+    const sql = "UPDATE users SET ? WHERE id = " + req.params.id;
+    conn.query(sql,req.body,function (err, result, fields) {  
+      if (err) throw err;
+      console.log(result);
+      res.redirect('/');
+      });
+  });
+  
+  app.get('/delete/:id',(req,res)=>{
+    const sql = "DELETE FROM users WHERE id = ?";
+    conn.query(sql,[req.params.id],function(err,result,fields){
+      if (err) throw err;
+      console.log(result)
+      res.redirect('/');
+    })
+  });
+  
+*/
 /**
  * 파라미터 변수 뜻
  * req : request 요청
@@ -24,13 +82,13 @@ const users = [
 /**
  * @path {GET} http://localhost:3000/
  * @description 요청 데이터 값이 없고 반환 값이 있는 GET Method
- */
+
 app.get("/", (req, res) => {
 
     //Hello World 데이터 반환
-    res.send("Hello World");
+    res.send("Hello 2223232332");
 });
-
+ */
 /**
  * @path {GET} http://localhost:3000/api/users
  * @description 요청 데이터 값이 없고 반환 값이 있는 GET Method
@@ -183,4 +241,6 @@ app.delete("/api/user/delete", (req, res) => {
 })
 
 // http listen port 생성 서버 실행
-app.listen(7071, () => console.log("개발이 취미인 남자 :)"));
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+
