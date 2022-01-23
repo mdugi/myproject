@@ -14,24 +14,10 @@ const users = [
  { id: 3, name: "유저3" }
 ];
 
-/*
-mysql test
-*/
-const conn = require('../query');
-/* GET home page. */ 
-app.get('/', function(req, res, next) { 
-    res.send("Hello 2223232332");
-    //conn.getAllUsers((rows) =>{ 
-        // res.render('index',{
-        //     user : result
-            
-        // });
-        
-   // }); 
-   
-}); 
+//router 가져오기
+const router_db = require('./dbtest');
+app.use('/',router_db);
 
-module.exports = app;
 
 /* 
   app.post('/', (req, res) => {
