@@ -2,12 +2,6 @@ const express = require("express");
 const router = express.Router();
 const conn = require('../query');
 
-// router.get('/', function(req, res) { 
-//     conn.getAllUsers((rows) =>{ 
-//         res.send(rows);
-//     });
-// }); 
-
 router.get('/', function(req, res) { 
     let table = "users";
     let as = "*";

@@ -4,12 +4,6 @@ const dbconfig   = require('./db');
 const conn = mysql.createConnection(dbconfig);
 const DEVMODE = true; 
 
-function getAllUsers(callback){ 
-    conn.query('SELECT * from users', (error, rows) => {
-        if (error) throw error;
-        callback(rows);
-    });    
-} 
 
 function getSelectFrom(table,as,where,opt,callback){
     let query = "SELECT "+as+" FROM "+table+" "+where+" "+opt;
@@ -91,5 +85,4 @@ module.exports = {
     ,setInsert
     ,setUpdate
     ,setDelete
-    ,getAllUsers 
 }
