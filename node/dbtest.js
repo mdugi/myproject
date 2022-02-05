@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const conn = require('../query');
+const conn = require('./query');
 
-router.get('/', function(req, res) { 
+router.get('/select', function(req, res) { 
     let table = "users";
     let as = "*";
     let where ="where 1=1";
@@ -13,7 +13,7 @@ router.get('/', function(req, res) {
     });
 }); 
 
-router.get('/insertTest', function(req, res) { 
+router.get('/insert', function(req, res) { 
     let table = "users";
     let fields = [
         'name'
@@ -27,7 +27,7 @@ router.get('/insertTest', function(req, res) {
     conn.setInsert(table,fields,values);
 }); 
 
-router.get('/updateTest', function(req, res) { 
+router.get('/update', function(req, res) { 
     let table = "users";
     let fields = [
         'email' 
@@ -40,7 +40,7 @@ router.get('/updateTest', function(req, res) {
     conn.setUpdate(table,fields,values,where);
 }); 
 
-router.get('/deleteTest', function(req, res) { 
+router.get('/delete', function(req, res) { 
     let table = "users";
     let where ="where id=3";
 
