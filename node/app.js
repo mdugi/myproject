@@ -42,6 +42,11 @@ app.get('/', function(request, response) {
     })
 })
 
+const answer = {
+    '테스트'  : '12345'
+
+}
+
 io.sockets.on('connection', function(socket) {
   
     /* 새로운 유저가 접속했을 경우 다른 소켓에게도 알려줌 */
@@ -52,7 +57,8 @@ io.sockets.on('connection', function(socket) {
       socket.name = name
   
       /* 모든 소켓에게 전송 */
-      io.sockets.emit('update', {type: 'connect', name: 'SERVER', message: name + '님이 접속하였습니다.'})
+    //   io.sockets.emit('update', {type: 'connect', name: 'SERVER', message: '챗봇테스트입니다..'})
+      io.sockets.emit('update', {type: 'connect', name: '챗봇', message: '챗봇테스트입니다. 질문을 하세요'})
     })
   
     /* 전송한 메시지 받기 */
@@ -60,10 +66,20 @@ io.sockets.on('connection', function(socket) {
       /* 받은 데이터에 누가 보냈는지 이름을 추가 */
       data.name = socket.name
       
-      console.log(data)
+      //console.log(data.message)
+      let msg = data.message;
+
+      if(answer[msg]){
+        console.log(answer[msg]);
+
+      }else{
+
+console.log('결과없음');
+      }
+      
   
       /* 보낸 사람을 제외한 나머지 유저에게 메시지 전송 */
-      socket.broadcast.emit('update', data);
+      //socket.broadcast.emit('update', data);
     })
   
     /* 접속 종료 */
